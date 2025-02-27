@@ -16,4 +16,6 @@ One example of optimizing functionality is implementing the Handlebars templatin
 
 While developing the functionality to retrieve and edit trips, I tested the API by making manual GET and PUT requests using Postman. I checked the response codes in the server log to see if the requests went through. With the GET requests, I checked that the correct response was returned. With the PUT requests, I examined the database using MongoDB Compass to ensure the data was correctly edited. Once I ensured the requests worked properly in Postman, I wrote the code necessary for the application to make those requests. I also used Postman to ensure the JSON web tokens and login functionality worked properly.
 
+## Reflection
+
 This course has helped me understand how a full-stack application works and how to develop one properly. I was particularly interested in learning how single-page applications work. Full-stack web developers are in high demand in the software engineering field, and I know what I learned in this course will help me in my future career.

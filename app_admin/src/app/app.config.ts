@@ -5,6 +5,7 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { routes } from './app.routes';
 import { authInterceptProvider } from './utils/jwt.interceptor';
 import { TripDataService } from './services/trip-data.service';
+import { RoomDataService } from './services/room-data.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,6 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     importProvidersFrom(HttpClientModule),
     authInterceptProvider,
-    TripDataService
+    TripDataService,
+    RoomDataService
   ]
 };

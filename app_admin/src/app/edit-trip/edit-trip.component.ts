@@ -92,4 +92,9 @@ export class EditTripComponent implements OnInit {
   get f() { 
     return this.editForm.controls; 
   }
+
+  // public method to handle cancel navigation
+  public onCancel(): void {
+    this.router.navigate(['']);
+  }
 }

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-light bg-light">
+<nav class="navbar navbar-expand navbar-light bg-light" style="padding-left: 4rem; padding-right: 4rem;">
   <a class="navbar-brand" href="#">
     <img src="/assets/images/logo.png">
   </a>
@@ -9,17 +9,26 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-link active" routerLink="">
-        Trips<span class="sr-only">(current)</span>
+      <a class="nav-item active" routerLink="">
+        <h4>Trips</h4>
+      </a>
+    </div>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item active" routerLink="rooms">
+        <h4>Rooms</h4>
       </a>
     </div>
   </div>
   <div class="navbar-end">
-    <a class="nav-item" routerLink="login" *ngIf="!isLoggedIn()">
-      <span class="has-icon-left">Log In</span>
-    </a>
-    <a class="nav-item active" (click)="onLogout()" *ngIf="isLoggedIn()">
-      <span class="has-icon-left">Log Out</span>
-    </a>
+    <h4>
+      <a class="nav-item" routerLink="login" *ngIf="!isLoggedIn()">
+        <span class="has-icon-left">Log In</span>
+      </a>
+      <a class="nav-item active" (click)="onLogout()" *ngIf="isLoggedIn()">
+        <span class="has-icon-left">Log Out</span>
+      </a>
+    </h4>
   </div>
 </nav>

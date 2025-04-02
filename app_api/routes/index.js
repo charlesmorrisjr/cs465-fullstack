@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken'); // Enable JSON Web Tokens
 
+const roomsController = require('../controllers/rooms.js');
 const tripsController = require('../controllers/trips');
 const authController = require('../controllers/authentication');
 
@@ -10,6 +11,9 @@ router.route('/login').post(authController.login);
 
 router.route('/trips').get(tripsController.tripsList).post(authenticateJWT, tripsController.tripsAddTrip);
 router.route('/trips/:tripCode').get(tripsController.tripsFindByCode).put(authenticateJWT, tripsController.tripsUpdateTrip);
+
+router.route('/rooms').get(roomsController.roomsList).post(authenticateJWT, roomsController.roomsAddroom);
+router.route('/rooms/:roomCode').get(roomsController.roomsFindByCode).put(authenticateJWT, roomsController.roomsUpdateroom);
 
 // Method to authenticate our JWT
 function authenticateJWT(req, res, next) {

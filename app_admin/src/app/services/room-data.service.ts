@@ -22,8 +22,8 @@ export class RoomDataService {
     return this.http.get<Room[]>(this.url);
   }
 
-  getRoom(roomCode: string): Observable<Room[]> {
-    return this.http.get<Room[]>(this.url + '/' + roomCode);
+  getRoom(roomCode: string): Observable<Room> {
+    return this.http.get<Room>(this.url + '/' + roomCode);
   }
 
   addRoom(formData: Room): Observable<Room> {

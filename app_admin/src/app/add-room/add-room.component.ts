@@ -15,6 +15,7 @@ import { Room } from '../models/room';
 export class AddRoomComponent implements OnInit {
   addForm!: FormGroup;
   submitted = false;
+  error: string | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,7 +35,18 @@ export class AddRoomComponent implements OnInit {
   }
 
   onSubmit() {
-    // Functionality to be implemented later
+    this.submitted = true;
+    if (this.addForm.valid) {
+      this.roomService.addRoom(this.addForm.value)
+        .subscribe({
+          next: (room) => {
+            this.router.navigate(['/rooms']);
+          },
+          error: (err) => {
+            this.error = "Error adding room";
+          }
+        });
+    }
   }
 
   // get the form short name to access the form fields

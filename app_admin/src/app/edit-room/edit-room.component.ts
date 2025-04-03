@@ -15,6 +15,7 @@ import { Room } from '../models/room';
 export class EditRoomComponent implements OnInit {
   editForm!: FormGroup;
   submitted = false;
+  error: string | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,7 +27,7 @@ export class EditRoomComponent implements OnInit {
     // Retrieve stashed roomCode
     let roomCode = localStorage.getItem("roomCode");
     if (!roomCode) {
-      alert("Something wrong, couldn't find where I stashed roomCode!");
+      this.error = "Something wrong, couldn't find where I stashed roomCode!";
       this.router.navigate(['']);
       return;
     }
@@ -42,19 +43,30 @@ export class EditRoomComponent implements OnInit {
 
     // Load the room data
     this.roomService.getRoom(roomCode)
-      .subscribe(rooms => {
-        if (rooms && rooms.length > 0) {
-          const room = rooms[0];
+      .subscribe({
+        next: (room) => {
           this.editForm.patchValue(room);
-        } else {
-          alert("Room not found!");
+        },
+        error: (err) => {
+          this.error = "Room not found!";
           this.router.navigate(['']);
         }
       });
   }
 
   onSubmit() {
-    // Functionality to be implemented later
+    this.submitted = true;
+    if (this.editForm.valid) {
+      this.roomService.updateRoom(this.editForm.value)
+        .subscribe({
+          next: (room) => {
+            this.router.navigate(['/rooms']);
+          },
+          error: (err) => {
+            this.error = "Error updating room";
+          }
+        });
+    }
   }
 
   // get the form short name to access the form fields
